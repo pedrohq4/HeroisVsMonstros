@@ -3,15 +3,13 @@ using System.Reflection.PortableExecutable;
 
 namespace jogo.Model.Heros
 {
-    class Mago : Heroi
+    public class Mago : Heroi
     {
         int Vida;
-        int Energia;
-        int TamanhoInventario;
         int Mana;
         int PoderMagico;
         int NumeroDeFeitiços;
-        List<Feiticos> feiticosAprendidos;
+        public List<Feiticos> feiticosAprendidos;
         public Mago(string nome) : base(nome)
         {
             Vida = new Random().Next(20, 50);
@@ -25,7 +23,6 @@ namespace jogo.Model.Heros
             feiticos.Add(new Feiticos("Raio de gelo", 15, 10));
             feiticos.Add(new Feiticos("Espinhos", 20, 10));
             feiticos.Add(new Feiticos("Cura", 50, 30));
-            feiticosAprendidos = new List<Feiticos>();
 
             for (int i = 0; i < NumeroDeFeitiços; i++)
             {
@@ -41,27 +38,18 @@ namespace jogo.Model.Heros
 
         public override string ExibirPersonagem()
         {
-
-            string feiticosStr = string.Join("\n", feiticosAprendidos.Select(s => $"Nome: {s.nome}, Dano: {s.dano}, Custo de Mana: {s.custoMana}"));
-
             return $"Nome: {Nome}, Vida: {Vida}, Mana: {Mana}, Poder Mágico: {PoderMagico}, Número de Feitiços: {NumeroDeFeitiços}," +
-                $" Nivel atual: {Nivel}" + $"\nFeitiços Aprendidos:\n{feiticosStr}";
+                $" Nivel atual: {Nivel}" + $"\nFeitiços Aprendidos:\n{ExibirFeiticos()}";
         }
 
-        public bool Atacar(int feticoescolhido, Monstro monstro)
+        public string ExibirFeiticos()
         {
-            int acerto = new Random().Next(0, 1);
-            
-            if (acerto == 1)
-            {
-              var feitico = feiticosAprendidos[feticoescolhido];
+            return string.Join("\n", feiticosAprendidos.Select(s => $"Nome: {s.nome}, Dano: {s.dano}, Custo de Mana: {s.custoMana}"));
+        } 
 
-              var danocausado = monstro.Vida - feitico.dano;
-
-             return true;
-            }
-            else
-             return false;
+        public List<Feiticos> ListarFeiticos()
+        {
+            return feiticosAprendidos;
         }
     }
 }

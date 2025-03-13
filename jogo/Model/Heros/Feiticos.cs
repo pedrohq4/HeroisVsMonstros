@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace jogo.Model.Heros
 {
-    class Feiticos
+    public class Feiticos
     {
         public string nome;
         public int dano;
