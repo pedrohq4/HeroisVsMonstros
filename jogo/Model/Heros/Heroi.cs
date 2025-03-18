@@ -17,5 +17,16 @@
         {
             return Nivel += nivelUp;
         }
+
+        public Heroi CriarPersonagem()
+        {
+            Console.WriteLine("Criador de personagem");
+            Console.WriteLine("Escolha o nome do seu personagem: ");
+
+            string nome = Console.ReadLine();
+            var mago = new Mago(nome);
+
+            return mago;
+        }
     }
 }

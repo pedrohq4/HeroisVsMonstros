@@ -28,18 +28,6 @@ namespace jogo
                         break;
                 }
             } while (menu != 0);
-
-            static Mago CriarPersonagem(List<Heroi> herois)
-            {
-               Console.WriteLine("Criador de personagem");
-               Console.WriteLine("Escolha o nome do seu personagem: ");
-               
-               string nome = Console.ReadLine();
-               var mago = new Mago(nome);
-               herois.Add(mago);
-
-               return mago;
-            }
         }
     }
 }

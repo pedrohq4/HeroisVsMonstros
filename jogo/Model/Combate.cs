@@ -16,20 +16,22 @@ namespace jogo.Model
             int escolha;
             if(heroi is Mago mago)
             {
-                List<Feiticos> feiticos = mago.ListarFeiticos();
-                Console.WriteLine("Qual feitico deseja atirar");
-                mago.ExibirFeiticos();
-                int.TryParse(Console.ReadLine(), out escolha);
+                do {
+                    List<Feiticos> feiticos = mago.ListarFeiticos();
+                    Console.WriteLine("Qual feitico deseja atirar");
+                    mago.ExibirFeiticos();
+                    int.TryParse(Console.ReadLine(), out escolha);
 
-                int vidaMonstro =  monsto.Vida - feiticos[escolha].dano;
-                if (monsto.Vida <= 0)
-                {
-                    monsto.Vida = vidaMonstro;
-                }
-                else
-                    Console.WriteLine("Monstro perdeu");
-                }
+                    int vidaMonstro = monsto.Vida - feiticos[escolha].dano;
+                    if (monsto.Vida <= 0)
+                    {
+                        monsto.Vida = vidaMonstro;
+                    }
+                    else
+                        Console.WriteLine("Monstro perdeu");
+                } while (mago.Vida > 0 || monsto.Vida > 0);
 
+            }
         }
     }
 }

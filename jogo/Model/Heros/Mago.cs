@@ -5,7 +5,7 @@ namespace jogo.Model.Heros
 {
     public class Mago : Heroi
     {
-        int Vida;
+        public int Vida { get; private set; }
         int Mana;
         int PoderMagico;
         int NumeroDeFeitiços;

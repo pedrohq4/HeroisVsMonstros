@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace jogo.Model.Enimes
 {
-    class Esqueleto
+    public class Esqueleto : Monstro
     {
         protected double espericenciaDropada = doublealeatorio(10, 100);
 
@@ -17,8 +17,6 @@ namespace jogo.Model.Enimes
             var rRangeDouble = rDouble * (upperBound - lowerBound) + lowerBound;
             return rRangeDouble;
         }
-
-
     }
 
 
