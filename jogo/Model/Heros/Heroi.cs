@@ -1,14 +1,19 @@
 ﻿namespace jogo.Model.Heros
 {
-    public abstract class Heroi : Combate
+    public abstract class Heroi : Game
     {
         public string Nome { get; protected set; }
-        public int Nivel { get; private set; } = 1;
-        public double Experiencia { get; private set; } = 0;
+        public int Vida { get; protected set; }
+        public int Nivel { get; set; }
+        public double Experiencia { get; set; }
+        public bool Vivo { get; private set;}
 
         public Heroi(string nome)
         {
             Nome = nome;
+            Nivel = 1;
+            Experiencia = 0;
+            Vivo = true;
         }
 
         public abstract string ExibirPersonagem();
@@ -18,15 +23,17 @@
             return Nivel += nivelUp;
         }
 
-        public Heroi CriarPersonagem()
+        public bool VerificarSeVivo()
         {
-            Console.WriteLine("Criador de personagem");
-            Console.WriteLine("Escolha o nome do seu personagem: ");
+            if (Vida <= 0)
+                return Vivo = false;
 
-            string nome = Console.ReadLine();
-            var mago = new Mago(nome);
+            else return true;
+        }
 
-            return mago;
+        public void TomarDano(int dano)
+        {
+            Vida -= dano;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace jogo.Model.Enimes
 {
-    public class Monstro : Combate
+    public class Monstro : Game
     {
         public int Vida { get; private set; }
         public int Dano { get; set; }
