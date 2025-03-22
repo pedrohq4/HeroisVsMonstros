@@ -5,7 +5,7 @@
         public string Nome { get; protected set; }
         public int Vida { get; protected set; }
         public int Nivel { get; set; }
-        public double Experiencia { get; set; }
+        public int Experiencia { get; set; }
         public bool Vivo { get; private set;}
 
         public Heroi(string nome)
@@ -34,6 +34,19 @@
         public void TomarDano(int dano)
         {
             Vida -= dano;
+        }
+
+        public void VerificarSeUpNivel()
+        {
+            if (Experiencia >= 100){
+                do
+                {
+                    Experiencia -= 100;
+                    Nivel++;
+
+                } while (Experiencia > 99);
+            }
+            
         }
     }
 }

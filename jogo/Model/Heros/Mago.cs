@@ -5,16 +5,15 @@ namespace jogo.Model.Heros
 {
     public class Mago : Heroi
     {
-        public int Vida { get; private set; }
         int Mana;
         int PoderMagico;
         int NumeroDeFeitiços;
-        public List<Feiticos> feiticosAprendidos;
+        public List<Feiticos> feiticosAprendidos = new List<Feiticos>();
         public Mago(string nome) : base(nome)
         {
             Vida = new Random().Next(20, 50);
             Mana = new Random().Next(50, 100);
-            PoderMagico = new Random().Next(1, 20);
+            PoderMagico = new Random().Next(1, 5);
             NumeroDeFeitiços = new Random().Next(2, 5);
 
             List<Feiticos> feiticos = new List<Feiticos>();

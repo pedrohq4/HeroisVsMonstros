@@ -10,7 +10,7 @@ namespace jogo.Model
 {
     public class Game
     {
-        public List<Monstro> monstros = new List<Monstro>();
+        public List<Monstro> Horda = new List<Monstro>();
 
         public void Combate(Heroi heroi, Monstro monstro)
         {
@@ -45,23 +45,19 @@ namespace jogo.Model
         {
             Console.WriteLine("Criador de personagem");
             Console.WriteLine("Escolha o nome do seu personagem: ");
-
             string nome = Console.ReadLine();
+
             var mago = new Mago(nome);
 
             return mago;
         }
 
-        public List<Monstro> CriarMonstro()
+        public void CriarHorda()
         {
-            List<Monstro> monstros = new List<Monstro>();
-
             for (int i = 0; i < 10; i++)
             {
-                monstros.Add(new Esqueleto());
+                Horda.Add(new Esqueleto());
             }
-
-            return monstros;
         }
     } 
 }

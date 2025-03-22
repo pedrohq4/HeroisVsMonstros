@@ -8,22 +8,30 @@ namespace jogo.Model.Enimes
 {
     public class Monstro : Game
     {
+        Random rand = new Random();
         public int Vida { get; private set; }
         public int Dano { get; set; }
+        public bool Vivo { get; private set; }
 
-        public Monstro CriarMonstro(int Tipomonstro)
+        public Monstro()
         {
-            switch (Tipomonstro) {
-                case 1:
-                    Random rand = new Random();
-                    Esqueleto esqueleto = new Esqueleto();
-                    esqueleto.Vida = rand.Next(10,20);
-                    esqueleto.Dano = rand.Next(20, 30);
+            Vida = rand.Next(10,20);
+            Dano = rand.Next(20, 30);
+            Vivo = true;
 
-                    return esqueleto;
-                default:
-                    return new Esqueleto();
-            }
+        }
+
+        public void TomarDano(int dano)
+        {
+            Vida -= dano;
+        }
+
+        public bool VerificarSeVivo()
+        {
+            if (Vida <= 0)
+                return Vivo = false;
+
+            else return true;
         }
     }
 }
