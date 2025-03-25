@@ -30,7 +30,7 @@
 
             else return true;
         }
-
+        public abstract int Atacar();
         public void TomarDano(int dano)
         {
             Vida -= dano;

@@ -1,5 +1,6 @@
 ﻿using jogo.Model.Enimes;
 using jogo.Model.Heros;
+using jogo.Model.Heros.Mago;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,30 +15,38 @@ namespace jogo.Model
 
         public void Combate(Heroi heroi, Monstro monstro)
         {
-            if (heroi is Mago mago)
+            do
             {
-                do
+                Console.WriteLine("Turno do jogador");
+                TurnoJogador(heroi, monstro);
+
+                if (monstro.Vivo)
                 {
-                    Console.WriteLine("Turno do jogador");
-                    Console.WriteLine("Qual feitico deseja atirar");
-                    mago.ExibirFeiticos();
-                    int.TryParse(Console.ReadLine(), out int feiticoEscolhido);
-
-                    monstro.TomarDano(mago.feiticosAprendidos[feiticoEscolhido].dano);
-
-                    if (!monstro.VerificarSeVivo())
-                    {
-                        Console.WriteLine("Monstro perdeu");
-                        break;
-                    }
-
                     Console.WriteLine("Turno do monstro");
-                    heroi.TomarDano(monstro.Dano);
-                    if (!heroi.VerificarSeVivo())
-                        Console.WriteLine("Heroi perdeu");
+                    TurnoMonstro(heroi, monstro);
+                }
+            } while (heroi.Vivo && monstro.Vivo);
+        }
 
+        private static void TurnoMonstro(Heroi heroi, Monstro monstro)
+        {
+            heroi.TomarDano(monstro.Dano);
+            if (!heroi.VerificarSeVivo())
+                Console.WriteLine("Heroi perdeu");
+        }
 
-                } while (mago.Vivo || monstro.Vivo);
+        private static void TurnoJogador(Heroi heroi, Monstro monstro)
+        {
+            int danoJogador = 0;
+            if (heroi is Mago mago)
+            danoJogador = mago.Atacar();
+            monstro.TomarDano(danoJogador);
+            Console.WriteLine($"O jogador deu {danoJogador} de dano em {monstro.Nome} - {monstro.Vida}");
+            Console.ReadKey();
+
+            if (!monstro.VerificarSeVivo())
+            {
+                Console.WriteLine("Monstro perdeu");
             }
         }
 
@@ -54,10 +63,11 @@ namespace jogo.Model
 
         public void CriarHorda()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                Horda.Add(new Esqueleto());
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Horda.Add(new Esqueleto());
+            //}
+            Horda.Add(new Esqueleto());
         }
     } 
 }

@@ -3,6 +3,7 @@ using jogo.Model.Enimes;
 using jogo.Model.Heros;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Numerics;
 
 namespace jogo
 {
@@ -24,8 +25,13 @@ namespace jogo
                         game.CriarHorda();
                         Console.WriteLine(player.ExibirPersonagem());
 
-                        for (int i = 0; i <= game.Horda.Count; i++)
-                             game.Combate(player, game.Horda[i]);
+                        foreach(Monstro monstro in game.Horda)
+                        {
+                            game.Combate(player, monstro);
+
+                            if (!player.Vivo)
+                                break;
+                        }
 
                       break;
                 }

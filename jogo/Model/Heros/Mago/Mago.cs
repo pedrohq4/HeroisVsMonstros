@@ -1,7 +1,7 @@
 ﻿using jogo.Model.Enimes;
 using System.Reflection.PortableExecutable;
 
-namespace jogo.Model.Heros
+namespace jogo.Model.Heros.Mago
 {
     public class Mago : Heroi
     {
@@ -49,6 +49,14 @@ namespace jogo.Model.Heros
         public List<Feiticos> ListarFeiticos()
         {
             return feiticosAprendidos;
+        }
+
+        public override int Atacar()
+        {
+            Console.WriteLine("Qual feitico deseja atirar");
+            ExibirFeiticos();
+            int.TryParse(Console.ReadLine(), out int feiticoEscolhido);
+            return feiticosAprendidos[feiticoEscolhido].dano;
         }
     }
 }

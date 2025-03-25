@@ -9,12 +9,15 @@ namespace jogo.Model.Enimes
     public class Monstro : Game
     {
         Random rand = new Random();
+
+        public string Nome { get; private set; }
         public int Vida { get; private set; }
         public int Dano { get; set; }
         public bool Vivo { get; private set; }
 
         public Monstro()
         {
+            Nome = "Esqueleto";
             Vida = rand.Next(10,20);
             Dano = rand.Next(20, 30);
             Vivo = true;
