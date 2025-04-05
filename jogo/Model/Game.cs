@@ -52,22 +52,32 @@ namespace jogo.Model
 
         public Heroi CriarPersonagem()
         {
+            Heroi heroi = null;
             Console.WriteLine("Criador de personagem");
             Console.WriteLine("Escolha o nome do seu personagem: ");
             string nome = Console.ReadLine();
+            Console.WriteLine("Escolha a classe do seu personagem:\n1.Mago\n2.Guerreiro");
+            int.TryParse(Console.ReadLine(), out int classe);
 
-            var mago = new Mago(nome);
+            switch (classe)
+            {
+                case 1:
+                    heroi = new Mago(nome);
+                    break;
+                case 2:
+                    heroi = new Guerreiro(nome);
+                    break;
+            }
 
-            return mago;
+            return heroi;
         }
 
         public void CriarHorda()
         {
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Horda.Add(new Esqueleto());
-            //}
-            Horda.Add(new Esqueleto());
+            for (int i = 0; i < 10; i++)
+            {
+                Horda.Add(new Esqueleto());
+            }
         }
     } 
 }

@@ -8,15 +8,14 @@ namespace jogo.Model.Enimes
 {
     public class Esqueleto : Monstro
     {
-        protected double espericenciaDropada = doublealeatorio(10, 100);
-
-        public static double doublealeatorio(double lowerBound, double upperBound)
+        Esqueleto()
         {
-            var random = new Random();
-            var rDouble = random.NextDouble();
-            var rRangeDouble = rDouble * (upperBound - lowerBound) + lowerBound;
-            return rRangeDouble;
+            Nome = "Esqueleto";
+            ExpericenciaDropada = new Random().Next(50, 100);
+            Vida = new Random().Next(10, 20);
+            Dano = new Random().Next(5, 10);
         }
+
     }
 
 

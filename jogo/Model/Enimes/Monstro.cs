@@ -10,18 +10,15 @@ namespace jogo.Model.Enimes
     {
         Random rand = new Random();
 
-        public string Nome { get; private set; }
-        public int Vida { get; private set; }
-        public int Dano { get; set; }
+        public string Nome { get; protected set; }
+        public int Vida { get; protected set; }
+        public int Dano { get; protected set; }
         public bool Vivo { get; private set; }
+        public int ExpericenciaDropada { get; protected set; }
 
         public Monstro()
         {
-            Nome = "Esqueleto";
-            Vida = rand.Next(10,20);
-            Dano = rand.Next(20, 30);
             Vivo = true;
-
         }
 
         public void TomarDano(int dano)
@@ -35,6 +32,11 @@ namespace jogo.Model.Enimes
                 return Vivo = false;
 
             else return true;
+        }
+
+        public int DroparExpericiencia()
+        {
+            return ExpericenciaDropada;
         }
     }
 }
