@@ -8,7 +8,7 @@ namespace jogo.Model.Enimes
 {
     public class Esqueleto : Monstro
     {
-        Esqueleto()
+        public Esqueleto()
         {
             Nome = "Esqueleto";
             ExpericenciaDropada = new Random().Next(50, 100);

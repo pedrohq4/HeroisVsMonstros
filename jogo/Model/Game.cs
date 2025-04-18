@@ -1,5 +1,6 @@
 ﻿using jogo.Model.Enimes;
 using jogo.Model.Heros;
+using jogo.Model.Heros.Guerreiro;
 using jogo.Model.Heros.Mago;
 using System;
 using System.Collections.Generic;
@@ -39,10 +40,18 @@ namespace jogo.Model
         {
             int danoJogador = 0;
             if (heroi is Mago mago)
-            danoJogador = mago.Atacar();
-            monstro.TomarDano(danoJogador);
-            Console.WriteLine($"O jogador deu {danoJogador} de dano em {monstro.Nome} - {monstro.Vida}");
-            Console.ReadKey();
+            {
+                danoJogador = mago.Atacar();
+                monstro.TomarDano(danoJogador);
+                Console.WriteLine($"O jogador deu {danoJogador} de dano em {monstro.Nome} - {monstro.Vida}");
+            }
+
+            else if (heroi is Guerreiro guerreiro)
+            {
+                danoJogador = guerreiro.Atacar();
+                monstro.TomarDano(danoJogador);
+                Console.WriteLine($"O jogador deu {danoJogador} de dano em {monstro.Nome} - {monstro.Vida}");
+            }
 
             if (!monstro.VerificarSeVivo())
             {
